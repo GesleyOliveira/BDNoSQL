@@ -1,0 +1,44 @@
+use('estoque')
+
+//Exemplo de insert
+db.produtos.insertOne({
+    "codBarras":"1234567890123",
+    "nome":"Arroz Agulhinha",
+    "preco":29.90
+})
+
+//Exemplo de select
+// O equivalente ao SELECT * FROM PRODUTOS;
+use('estoque')
+db.produtos.find()
+
+//Exemplo com insertMany
+use('estoque')
+db.produtos.insertMany([
+    {
+        "codBarras":"12345678901234",
+        "nome":"Arroz Parabolizado",
+        "preco":32.90
+    },
+    {
+        "codBarras":"1234567890125",
+        "nome":"Feijão Preto 🍛",
+        "preco":9.90,
+    }
+])
+
+// SELECT nome, preco from PRODUTOS
+use('estoque')
+db.produtos.find({},{_id:0, nome:1, preco:1})
+
+/*SELECT codbarras, nome from PRODUTOS
+WHERE codbarras = '1234567890123'
+*/
+use('estoque')
+db.produtos.find({codBarras: '1234567890123'},{_id:0, codBarras:1, nome:1})
+
+/*SELECT codbarras, nome from PRODUTOS
+WHERE nome like '%ARROZ%'
+*/
+use('estoque')
+db.produtos.find({nome: /arroz/i}, {_id:0, codBarras:1, nome:1}) //i significa "insensitive case" para ignorar o sensitive case
