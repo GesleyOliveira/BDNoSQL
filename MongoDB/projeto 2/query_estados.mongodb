@@ -1,0 +1,22 @@
+use('DadosGeo')
+/*Listar a UF, nome e longitude de todos os estados com a longitude menor que -63*/
+db.estados.find({longitude: {$lt: -63}},
+                {_id:0, uf:1, nome:1, longitude:1})
+
+/*Listar a UF, nome e códigoUF de todos os estados com o código entre 10 e 20*/
+
+use('DadosGeo')
+db.estados.find({codigo_uf: {$gte: 10, $lte: 20}},
+                {_id:0, uf:1, codigo_uf:1, nome:1})
+
+
+use('DadosGeo')
+db.estados.find({$and:
+                    [
+                    {codigo_uf: {$gte: 10}},
+                    {codigo_uf: {$lte: 20}}
+                    ]},
+                {_id:0, uf:1, codigo_uf:1, nome:1})
+
+
+
