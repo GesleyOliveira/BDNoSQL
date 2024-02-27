@@ -1,0 +1,71 @@
+/*1. Defina a query NoSQL para exibir todos os documentos da collection
+restaurantes.*/
+use('DadosGeo')
+db.restaurantes.find({},{})
+
+/*2. Defina a query NoSQL para exibir os campos restaurante_id, nome,
+bairro e cozinha de todos os documentos da collection restaurantes.*/
+use('DadosGeo')
+db.restaurantes.find({},{_id:1, nome:1, bairro:1, cozinha:1})
+
+/*3. Defina a query NoSQL para exibir os campos restaurante_id, nome,
+bairro e cozinha, porém, excluindo o campo _id de todos os documentos
+da collection restaurantes*/
+use('DadosGeo')
+db.restaurantes.find({},{_id: 0, nome:1, bairro:1, cozinha:1})
+
+/*4. Defina a query NoSQL para exibir os campos restaurante_id, nome,
+bairro e cep, porém, excluindo o campo _id de todos os documentos da
+collection restaurantes.*/
+use('DadosGeo')
+db.restaurantes.find({},{_id: 0, nome:1, bairro:1, 'endereço.cep':1})
+
+
+/*5. Defina a query NoSQL para exibir todos os restaurantes que estão
+localizados no bairro Bronx.*/
+use('DadosGeo')
+db.restaurantes.find({bairro:'Bronx'},{})
+
+
+/*6. Defina a query NoSQL para exibir os 5 primeiros restaurantes que
+estão localizados no bairro Bronx.*/
+use('DadosGeo')
+db.restaurantes.find({bairro:'Bronx'},{})
+                    .limit(5)
+
+
+/*7.Defina a query NoSQL para exibir os próximos 5 restaurantes após
+“pular” os 5 primeiros que estão localizados no bairro Bronx.*/
+use('DadosGeo')
+db.restaurantes.find({bairro:'Bronx'},{})
+                    .skip(5)
+                    .limit(5)
+
+
+/*8. Defina a query NoSQL para exibir todos os restaurantes que obtiveram
+uma avaliação maior que 90 pontos*/
+use('DadosGeo')
+db.restaurantes.find({'avaliações.pontos': {$gt: 90}},{})
+
+/*9. Defina a query NoSQL para exibir todos os restaurantes que obtiveram
+uma avaliação maior que 80 e menor que 100.*/
+use('DadosGeo')
+db.restaurantes.find({'avaliações.pontos': {$gt: 80, $lt: 100}},{})
+
+/*10. Defina a query NoSQL para exibir todos os restaurantes que estão
+localizados em uma latitude menor que -95.754168.*/
+use('DadosGeo')
+db.restaurantes.find({'endereço.coord.0': {$lt: -95.754168}},{})
+
+/*11. Defina a query NoSQL para exibir todos os restaurantes que não são
+da cozinha 'American', que tenham pelo menos 70 pontos de avaliação e
+que a latitude seja menor que -65.754168. (utilize o operador $and)*/
+use('DadosGeo')
+db.restaurantes.find({$and:
+                    [
+                     {'cozinha': {$ne: 'American'}}
+                    ]}, {})
+
+
+
+

@@ -16,7 +16,48 @@ db.estados.find({$and:
                     {codigo_uf: {$gte: 10}},
                     {codigo_uf: {$lte: 20}}
                     ]},
-                {_id:0, uf:1, codigo_uf:1, nome:1})
+                {_id:0, uf:1, codigo_uf:1, nome:1}).count()
+
+/*Retorne todos os estados cujo nome começe com Rio e retorne em ordem alfabética*/
+use('DadosGeo')
+db.estados.find({nome: /^rio/i},
+                {codigo_uf:1, nome:1}).sort({nome:1})// 1 é ordem ascendente (A->Z), -1 é ordem descendente (Z->A)
+
+/*Retorne todos os municipios que contenham no nome Itu, retornando em ordem alfabética
+limitando a 5 registros*/
+use('DadosGeo')
+db.municipios.find({nome: /Itu/i},
+                   {_id:0, codigo_uf:1, nome:1})
+                .sort({nome:1}) //Ordena por ordem 
+                .skip(10) //Faz uma paginação
+                .limit(10) // Limita a quantidade exibida
+
+/*Lintando todos os municipios pertencentes a uma uf*/
+use('DadosGeo')
+db.estados.aggregate([
+    {
+        $lookup: {
+          from: 'municipios',
+          localField: 'codigo_uf',
+          foreignField: 'codigo_uf',
+          as: 'lista_municipios'
+        }
+    }
+])
+
+use('DadosGeo')
+db.municipios.aggregate([
+    {
+        $lookup: {
+          from: 'estados',
+          localField: 'codigo_uf',
+          foreignField: 'codigo_uf',
+          as: 'detalhe_estado'
+        }
+    }
+])
+
+
 
 
 

@@ -193,3 +193,4 @@ const estados = [
 ]
 
 db.estados.insertMany(estados)
+
