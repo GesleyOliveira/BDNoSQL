@@ -1,0 +1,45 @@
+//Teste da API REST de Prestadores
+@baseURL = http://localhost:4000/api/prestadores
+
+//GET - Lista todos os prestadores
+GET {{baseURL}}/?LIMIT=3&skip=0
+Content-Type: application/json
+
+###
+//GET - Lista o prestador pelo ID
+get {{baseURL}}/id/65f8c3c70d77a286c2c9dd06
+Content-Type: application/json
+
+### //Precisa usar o "###" separando, para dar certo
+//GET - Lista o prestador pela razao social ou fantasia
+GET {{baseURL}}/razao/boy
+Content-Type: application/json
+
+### 
+//DELETE - Remove o prestador pelo id
+DELETE {{baseURL}}/65f8c75d211ddd575b2f6be9
+Content-Type: application/json
+
+###
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "cnpj" : "12345345000166",
+    "razao_social" : "MARIA ALCINA TRANSPORTES LTDA",
+    "cep" : "13310160",
+    "endereco" : {
+        "logradouro": "Av. Presidente Kennedy, 321",
+        "complemento" : "",
+        "bairro" : "Centro",
+        "localidade" : "Votorantim",
+        "uf" : "sp"
+    },
+    "cnae_fiscal": 451510,
+    "nome_fantasia" : "ALCINA",
+    "data_inicio_atividade": "2022-07-22",
+    "localizacao": {
+        "type" : "Point",
+        "coordinates": [-23.2904, -47.2963]
+    }
+}
