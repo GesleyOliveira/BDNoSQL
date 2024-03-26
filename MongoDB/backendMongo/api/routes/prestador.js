@@ -164,4 +164,32 @@ router.post('/', validaPrestador, async(req, res) => {
         res.status(500).json({message: `{err.message} Erro no Server`})
     }
 })
+
+/**
+ * PUT /api/prestadores
+ * Insere um novo prestador de serviço
+ * Parâmetros: Objeto prestador
+ */
+
+router.put('/', validaPrestador, async(req, res) => {
+    let idDocumento = req.body._id //armazenamos o _id do documento
+    delete req.body._id //removemos o _id do body que foi recebido na req.
+    try {
+       /* if (req.method === 'PUT'){
+            //ignora a validação do CNPJ
+            req.check('cnpj').skip().if(idDocumento)
+        } */
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors: errors.array()})
+        }
+        const prestador = await db.collection(nomeCollection)
+        .updateOne({'_id': {$eq: new ObjectId(idDocumento)}},
+                    {$set: req.body})
+        res.status(202).json(prestador) //Accepted
+    } catch (err){
+        res.status(500).json({errors: err.message})
+    }
+}) 
+
 export default router
