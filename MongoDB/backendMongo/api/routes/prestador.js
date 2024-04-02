@@ -10,7 +10,7 @@ const validaPrestador = [
     check('cnpj').not().isEmpty().trim().withMessage('É obrigatório informar o cnpj')
     .isNumeric().withMessage('O CNPJ deve ter apenas números')
     .isLength({min:14, max:14}).withMessage('O CNPJ deve ter 14 números')
-    .custom(async (cnpj) => {
+    .custom(async (cnpj, {req}) => {
         const contaPrestador = await db.collection(nomeCollection)
         .countDocuments({
                         'cnpj': cnpj,
