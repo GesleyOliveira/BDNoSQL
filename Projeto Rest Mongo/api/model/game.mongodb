@@ -1,0 +1,14 @@
+use('NewGames')
+
+const game = {
+    "nome": "The Legend of Zelda: Ocarina of Time",
+    "plataforma": "Nintendo 64",
+    "condicao": "usado",
+    "preco": 150.90,
+    "anoLancamento": "1998-11-21",
+    "genero": [
+        "acao",
+        "aventura"],
+    "quantidade": 1
+}
+db.games.insertOne(game)
