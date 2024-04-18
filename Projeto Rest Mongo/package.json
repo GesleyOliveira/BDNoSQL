@@ -2,7 +2,7 @@
   "name": "newgames",
   "version": "1.0.0",
   "description": "loja de jogos online",
-  "main": "index.js",
+  "main": "api/index.js",
   "type": "module",
   "engines": {
     "node": "18.x",
