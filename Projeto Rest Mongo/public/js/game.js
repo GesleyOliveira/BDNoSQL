@@ -19,7 +19,7 @@ async function carregaGames(){
                 <td>Plataforma:${game.plataforma}</td>
                 <td>Condição:${game.condicao}</td>
                 <td>Ano de Lançamento:${new Date(game.anoLancamento).toLocaleDateString()}</td>
-                <td>Genero${game.genero.forEach(genero => {genero})}</td>
+                <td>Genero: ${game.genero}</td>
                 <td>
                 <button id='botaoComprar'>Comprar</button>
                 </td>
@@ -58,7 +58,7 @@ document.getElementById('formGame').addEventListener('submit',function (event){
         "condicao": document.getElementById('condicao').value,
         "anoLancamento": document.getElementById('anoLancamento').value,
         "genero": document.getElementById('genero').value,
-        "quantidade": document.getElementById('quantidade').value,
+        "quantidade": parseFloat(document.getElementById('qtd').value),
     }/* Fim do objeto */
    // alert(JSON.stringify(prestador)) apenas para testes
    salvarGame(game)

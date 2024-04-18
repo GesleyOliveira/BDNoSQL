@@ -3,7 +3,7 @@ function verificaLogin(){
     var senha = document.getElementById('senha').value;
 
     if(email == "adm" && senha == "adm123"){
-        window.location = 'inicio.html'    
+        window.location = 'cadastro.html'    
     }
     else{
         document.getElementById('aviso').innerHTML = "Email ou Senha incorreto"

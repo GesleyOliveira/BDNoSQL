@@ -19,24 +19,21 @@ const validaGame = [
             throw new Error('O Nome informado já está cadastrado!')
         }
     }),
-
     check('plataforma').not().isEmpty().trim().withMessage('Informar a plataforma é obrigatório')
-    .isLength({min:5}).withMessage('A plataforma é muito curto. Mínimo de 5')
-    .isLength({max:25}).withMessage('A plataforma é muito longa. Máximo de 25')
-    .isAlphanumeric('pt-BR', {ignore: '/. '}).withMessage('A plataforma não pode conter caracteres especiais'),
-
-    check('condicao')
-    .not().isEmpty().trim().withMessage('É obrigatório informar a condição'),
+        .isLength({ min: 5 }).withMessage('A plataforma é muito curto. Mínimo de 5')
+        .isLength({ max: 25 }).withMessage('A plataforma é muito longa. Máximo de 25')
+        .isAlphanumeric('pt-BR', { ignore: '/. ' }).withMessage('A plataforma não pode conter caracteres especiais'),
+    check('condicao').not().isEmpty().trim().withMessage('É obrigatório informar a condição'),
 
     check('preco').notEmpty().withMessage('O preço é obrigatório').isFloat(),
 
-    check('ano_lancamento').matches(/^\d{4}-\d{2}-\d{2}$/)
-        .withMessage('O formato da data é inválido. Informe yyyy-mm-dd'),
-    
+    check('ano_lancamento').matches(/^\d{2}-\d{2}-\d{4}$/)
+        .withMessage('O formato da data é inválido. Informe dd-mm-yyyy'),
+
     check('genero').notEmpty().withMessage('O genero é obrigatório'),
     check('quantidade').isNumeric().withMessage('A quantidade deve ser um número')
-    .notEmpty().withMessage('A quantidade é obrigatória'),
-    
+        .notEmpty().withMessage('A quantidade é obrigatória'),
+
 ]
 
 /**
