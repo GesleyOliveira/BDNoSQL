@@ -26,7 +26,7 @@ app.get('/api', (req, res) => {
     })
 })
 //Rotas da API
-//app.use('/api/game', RotasGame)
+app.use('/api/games', RotasGame)
 //Listen
 app.listen(PORT, function(){
     console.log(`💻Servidor rodando na porta ${PORT}`)

@@ -97,14 +97,13 @@ router.get('/id/:id', async (req, res) => {
  * Lista o prestador de serviço pelo id
  * Parâmetros: id
  */
-router.get('/razao/:filtro', async (req, res) => {
+router.get('/nome/:filtro', async (req, res) => {
     try {
         const filtro = req.params.filtro.toString()
         const docs = []
         await db.collection(nomeCollection).find({
             $or: [
-                { 'razao_social': { $regex: filtro, $options: 'i' } },
-                { 'nome_fantasia': { $regex: filtro, $options: 'i' } }
+                { 'nome': { $regex: filtro, $options: 'i' } },
             ]
         }).forEach((doc) => {
             docs.push(doc)
@@ -114,14 +113,14 @@ router.get('/razao/:filtro', async (req, res) => {
         res.status(500).json({
             errors: [{
                 value: `${err.message}`,
-                msg: 'Erro ao obter o prestador pela razão social',
-                param: '/razao/:filtro'
+                msg: 'Erro ao obter o jogo pelo nome',
+                param: '/nome/:filtro'
             }]
         })
     }
 })
 /**
- * GET /api/prestadores/id
+ * GET /api/game/id
  * Remove o prestador de serviço pelo id
  * Parâmetros: id
  */
@@ -132,8 +131,8 @@ router.delete('/:id', async(req, res)=>{
     if (result.deletedCount === 0){
         res.status(404).json({
             errors: [{
-                value: `Não há nenhum prestador com o id ${req.params.id}`,
-                msg: 'Erro ao excluir o prestador',
+                value: `Não há nenhum jogo com o id ${req.params.id}`,
+                msg: 'Erro ao excluir o jogo',
                 param: '/:id'
             }]
         })
@@ -143,7 +142,7 @@ router.delete('/:id', async(req, res)=>{
 })
 
 /**
- * POST /api/prestadores
+ * POST /api/game
  * Insere um novo prestador de serviço
  * Parâmetros: Objeto prestador
  */
@@ -153,16 +152,16 @@ router.post('/', validaGame, async(req, res) => {
         if(!errors.isEmpty()){
             return res.status(400).json({ errors: errors.array()})
         }
-        const prestador = 
+        const game = 
                     await db.collection(nomeCollection).insertOne(req.body)
-        res.status(201).json(prestador) //201 é o status created
+        res.status(201).json(game) //201 é o status created
     } catch (err){
         res.status(500).json({message: `{err.message} Erro no Server`})
     }
 })
 
 /**
- * PUT /api/prestadores
+ * PUT /api/game
  * Insere um novo prestador de serviço
  * Parâmetros: Objeto prestador
  */
@@ -179,10 +178,10 @@ router.put('/', validaGame, async(req, res) => {
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()})
         }
-        const prestador = await db.collection(nomeCollection)
+        const game = await db.collection(nomeCollection)
         .updateOne({'_id': {$eq: new ObjectId(idDocumento)}},
                     {$set: req.body})
-        res.status(202).json(prestador) //Accepted
+        res.status(202).json(game) //Accepted
     } catch (err){
         res.status(500).json({errors: err.message})
     }
