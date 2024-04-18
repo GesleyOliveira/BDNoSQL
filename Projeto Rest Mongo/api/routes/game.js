@@ -147,7 +147,7 @@ router.delete('/:id', async(req, res)=>{
  * Insere um novo prestador de serviço
  * Parâmetros: Objeto prestador
  */
-router.post('/', validaPrestador, async(req, res) => {
+router.post('/', validaGame, async(req, res) => {
     try{
         const errors = validationResult(req)
         if(!errors.isEmpty()){
@@ -167,7 +167,7 @@ router.post('/', validaPrestador, async(req, res) => {
  * Parâmetros: Objeto prestador
  */
 
-router.put('/', validaPrestador, async(req, res) => {
+router.put('/', validaGame, async(req, res) => {
     let idDocumento = req.body._id //armazenamos o _id do documento
     delete req.body._id //removemos o _id do body que foi recebido na req.
     try {
