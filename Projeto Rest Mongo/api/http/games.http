@@ -1,0 +1,55 @@
+//Teste da API REST de games
+@baseURL = http://localhost:4000/api/games
+
+//GET - Lista todos os games
+GET {{baseURL}}/?LIMIT=3&skip=0
+Content-Type: application/json
+
+###
+//GET - Lista o game pelo ID
+get {{baseURL}}/id/65f8c3c70d77a286c2c9dd06
+Content-Type: application/json
+
+### //Precisa usar o "###" separando, para dar certo
+//GET - Lista o game pelo nome
+GET {{baseURL}}/nome
+Content-Type: application/json
+
+### 
+//DELETE - Remove o game pelo id
+DELETE {{baseURL}}/65f8c75d211ddd575b2f6be9
+Content-Type: application/json
+
+###
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "The Legend of Zelda: Ocarina of Time",
+    "plataforma": "Nintendo 64",
+    "condicao": "usado",
+    "preco": 150.90,
+    "anoLancamento": "1998-11-21",
+    "genero": [
+        "acao",
+        "aventura"],
+    "quantidade": 1
+}
+
+###
+// PUT - Altera um game já existente 
+
+PUT {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "The Legend of Zelda: Tears Of The Kingdom",
+    "plataforma": "Nintendo Switch",
+    "condicao": "Novo",
+    "preco": 280.00,
+    "anoLancamento": "2023-05-12",
+    "genero": [
+        "acao",
+        "aventura"],
+    "quantidade": 1
+}

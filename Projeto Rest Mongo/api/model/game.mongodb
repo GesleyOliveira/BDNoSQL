@@ -12,3 +12,17 @@ const game = {
     "quantidade": 1
 }
 db.games.insertOne(game)
+
+const game2 = {
+    "nome": "The Legend of Zelda: Tears Of The Kingdom",
+    "plataforma": "Nintendo Switch",
+    "condicao": "Novo",
+    "preco": 280.00,
+    "anoLancamento": "2023-05-12",
+    "genero": [
+        "acao",
+        "aventura"],
+    "quantidade": 1
+}
+
+db.games.insertOne(game)
