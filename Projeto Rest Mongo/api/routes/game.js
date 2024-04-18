@@ -24,11 +24,9 @@ const validaGame = [
         .isLength({ max: 25 }).withMessage('A plataforma é muito longa. Máximo de 25')
         .isAlphanumeric('pt-BR', { ignore: '/. ' }).withMessage('A plataforma não pode conter caracteres especiais'),
     check('condicao').not().isEmpty().trim().withMessage('É obrigatório informar a condição'),
-
     check('preco').notEmpty().withMessage('O preço é obrigatório').isFloat(),
-
-    check('ano_lancamento').matches(/^\d{2}-\d{2}-\d{4}$/)
-        .withMessage('O formato da data é inválido. Informe dd-mm-yyyy'),
+    check('anoLancamento').matches(/^\d{4}-\d{2}-\d{2}$/)
+        .withMessage('O formato da data é inválido. Informe yyyy-mm-dd'),
 
     check('genero').notEmpty().withMessage('O genero é obrigatório'),
     check('quantidade').isNumeric().withMessage('A quantidade deve ser um número')
