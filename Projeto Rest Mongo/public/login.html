@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js" defer></script>
+    <title>New Games</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="marca">
+            <h2 class="nomeMarca">New Games</h2>
+        </div>
+        <div class="opcoes">
+            <a href="inicio.html" class="opcaoInicio">
+                <h3 class="palavraInicio">Inicio</h3>
+            </a>
+            <a href="login.html" class="opcaoLogin">
+                <h3 class="palavraLogin">Login</h3>
+            </a>  
+        </div>
+    </nav>    
+    
+    <div class="areaLogin">
+        <div class="login">
+            <h2 id="login">Login</h2>
+        </div>
+        <div class="aviso">
+            <span id="aviso"></span>
+        </div>
+        <div class="email"> 
+            <label for="email" id="labelEmail">Email</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="senha">
+            <label for="senha" id="labelSenha">Senha</label>
+            <input type="password" id="senha" name="senha">
+        </div>
+        <div class="botao">
+            <button id="botao" onclick="verificaLogin()">Logar 🔑</button>
+        </div>
+    </div>
+
+</body>
+</html>

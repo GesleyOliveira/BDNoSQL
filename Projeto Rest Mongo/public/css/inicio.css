@@ -1,0 +1,59 @@
+@font-face {
+    font-family: Nordic;
+    src: url('../Fonts/Nordic.ttf');
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+    display: contents;
+}
+
+.navbar{
+    width: 100%;
+    font-family: Nordic;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: rgb(197, 207, 55);
+    background-color: rgb(41, 34, 34);
+    align-content: stretch;
+    
+}
+
+.opcoes{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: small;
+    
+}
+
+a{
+    text-decoration: none;
+    color: rgb(197, 207, 55);
+}
+
+.marca{
+    font-size: medium;
+    display: flex;
+    justify-content: space-around;
+    border-style: double;
+}
+
+.opcaoLogin{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    border-style: double;
+    border-top: 0cap;
+
+}
+
+.opcaoInicio{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    border-style: double;
+    border-top: 0cap;
+}

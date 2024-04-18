@@ -26,7 +26,6 @@ const validaGame = [
     .isAlphanumeric('pt-BR', {ignore: '/. '}).withMessage('A plataforma não pode conter caracteres especiais'),
 
     check('condicao')
-    .isLength({min:8, max:8}).withMessage('A condição informada é inválido')
     .not().isEmpty().trim().withMessage('É obrigatório informar a condição'),
 
     check('preco').notEmpty().withMessage('O preço é obrigatório').isFloat(),
@@ -35,7 +34,8 @@ const validaGame = [
         .withMessage('O formato da data é inválido. Informe yyyy-mm-dd'),
     
     check('genero').notEmpty().withMessage('O genero é obrigatório'),
-    check('quantidade').isNumeric().withMessage('A quantidade deve ser um número'),
+    check('quantidade').isNumeric().withMessage('A quantidade deve ser um número')
+    .notEmpty().withMessage('A quantidade é obrigatória'),
     
 ]
 
