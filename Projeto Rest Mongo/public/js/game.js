@@ -1,5 +1,3 @@
-import { body } from "express-validator"
-
 const urlBase = 'http://localhost:4000/api'
 
 async function carregaGames(){
