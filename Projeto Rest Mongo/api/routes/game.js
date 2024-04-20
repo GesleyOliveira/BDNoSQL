@@ -8,7 +8,7 @@ const nomeCollection = 'games'
 
 const validaGame = [
     check('nome').not().isEmpty().trim().withMessage('É obrigatório informar o nome')
-    .isLength({min:5, max:20}).withMessage('O nome pode conter letras e números')
+    .isLength({min:2, max:20}).withMessage('O nome pode conter letras e números')
     .custom(async (nome, {req}) => {
         const contaGame = await db.collection(nomeCollection)
         .countDocuments({
