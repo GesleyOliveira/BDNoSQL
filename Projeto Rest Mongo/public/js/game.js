@@ -1,3 +1,5 @@
+import { body } from "express-validator"
+
 const urlBase = 'http://localhost:4000/api'
 
 async function carregaGames(){
@@ -30,6 +32,60 @@ async function carregaGames(){
     })
 }
 
+async function carregaGames2(){
+    const tabela = document.getElementById('dadosTabela')
+    tabela.innerHTML = '' // Liga antes de recarregar
+    //Faremos a requisição GET para a nossa API REST
+    await fetch(`${urlBase}/games`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(game => {
+            tabela.innerHTML += `
+            <tr>
+                <td>Nome:<input type="text" value="${game.nome}"></td>
+                <td>Plataforma:<input type="text" value="${game.plataforma}"></td>
+                <td>Condição:<input type="text" value="${game.condicao}"></td>
+                <td>Ano de Lançamento:<input value="${new Date(game.anoLancamento).toLocaleDateString()}"></td>
+                <td>Genero:<input value="${game.genero}"></td>
+                <td>Preço:<input value="${game.preco}"></td>
+                <td>
+                <button id='botaoExcluir' onclick='removeGame("${game._id}")'>Exlcuir</button>
+                <button id='botaoEditar' onclick='atualizaGame("${game}")'>Editar</button>
+                </td>
+            </tr>
+            `  
+        })
+    })
+}
+
+async function atualizaGame(game){
+    let game1 = {
+        "_id": game._id,
+        "nome": game.nome,
+        "plataforma":game.plataforma,
+        "condicao": game.condicao,
+        "anoLancamento": game.anoLancamento,
+        "genero": game.genero,
+        "preco" : game.preco,
+        "quantidade": parseFloat(game.quantidade),
+    }
+    if(confirm('Deseja realmente editar este jogo?')){
+        await fetch(`${urlBase}/${game1}`,{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        body: JSON.stringify(game1)
+        })
+        .then(response => response.json())
+    }
+}
+
 async function removeGame(id) {
     if (confirm('Deseja realmente excluir este jogo?')) {
         await fetch(` ${urlBase}/games/${id}`, {
@@ -41,7 +97,7 @@ async function removeGame(id) {
             .then(response => response.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    carregaJogos() // atualizamos a UI
+                    carregaGames2() // atualizamos a UI
                 }
             })
             .catch(error => {

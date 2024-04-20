@@ -39,7 +39,7 @@ a{
     border-style: double;
 }
 
-.opcaoLogin{
+.opcao{
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -49,11 +49,8 @@ a{
 
 }
 
-.opcaoInicio{
-    width: 100%;
+#dadosTabela tr{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    border-style: double;
-    border-top: 0cap;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
