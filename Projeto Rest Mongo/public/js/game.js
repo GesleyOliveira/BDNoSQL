@@ -42,44 +42,49 @@ async function carregaGames2(){
     })
     .then(response => response.json())
     .then(data => {
-        i = 0;
+        i = 1
         data.forEach(game => {
             tabela.innerHTML += `
             <tr>
+                td
                 <td>Nome:<input id="nome${i}" type="text" value="${game.nome}"></td>
                 <td>Plataforma:<input id="plataforma${i}" type="text" value="${game.plataforma}"></td>
-                <td>Condição:<input type="text" value="${game.condicao}"></td>
-                <td>Ano de Lançamento:<input value="${new Date(game.anoLancamento).toLocaleDateString()}"></td>
-                <td>Genero:<input value="${game.genero}"></td>
-                <td>Preço:<input value="${game.preco}"></td>
+                <td>Condição:<input id="condicao${i}" type="text" value="${game.condicao}"></td>
+                <td>Ano de Lançamento:<input id="anoLancamento${i}" value="${new Date(game.anoLancamento).toLocaleDateString()}"></td>
+                <td>Genero:<input id="genero${i}" value="${game.genero}"></td>
+                <td>Preço:<input id="preco${i}" value="${game.preco}"></td>
+                <td>Quantidade:<input id="quantidade${i}" value="${game.quantidade}"></td>
                 <td>
                 <button id='botaoExcluir' onclick='removeGame("${game._id}")'>Exlcuir</button>
-                <button id='botaoEditar' onclick='atualizaGame("${game}")'>Editar</button>
+                <button id='botaoEditar' onclick='atualizaGame("${game, i}")'>Editar</button>
                 </td>
             </tr>
-            `  
+            ` 
+            i++ 
         })
+        
     })
 }
 
-async function atualizaGame(game){
-    let game1 = {
+async function atualizaGame(game, i){
+    console.log(i)
+        game = {
         "_id": game._id,
-        "nome": game.nome,
-        "plataforma":game.plataforma,
-        "condicao": game.condicao,
-        "anoLancamento": game.anoLancamento,
-        "genero": game.genero,
-        "preco" : game.preco,
-        "quantidade": parseFloat(game.quantidade),
+        "nome": document.getElementById('nome' + i).value,
+        "plataforma": document.getElementById('plataforma' + i).value,
+        "condicao": document.getElementById('condicao' + i).value,
+        "anoLancamento": document.getElementById('anoLancamento' + i).value,
+        "genero":  document.getElementById('genero' + i).value,
+        "preco" :  document.getElementById('preco' + i).value,
+        "quantidade": parseFloat(document.getElementById('quantidade' + i)).value,
     }
     if(confirm('Deseja realmente editar este jogo?')){
-        await fetch(`${urlBase}/${game1}`,{
+        await fetch(`${urlBase}/games`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-        body: JSON.stringify(game1)
+        body: JSON.stringify(game)
         })
         .then(response => response.json())
     }

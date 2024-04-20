@@ -43,7 +43,7 @@ PUT {{baseURL}}
 Content-Type: application/json
 
 {
-    "nome": "The Legend of Zelda: Tears Of The Kingdom",
+    "nome": "The Tears Of The Kingdom",
     "plataforma": "Nintendo Switch",
     "condicao": "Novo",
     "preco": 280.00,
