@@ -42,11 +42,12 @@ async function carregaGames2(){
     })
     .then(response => response.json())
     .then(data => {
+        i = 0;
         data.forEach(game => {
             tabela.innerHTML += `
             <tr>
-                <td>Nome:<input type="text" value="${game.nome}"></td>
-                <td>Plataforma:<input type="text" value="${game.plataforma}"></td>
+                <td>Nome:<input id="nome${i}" type="text" value="${game.nome}"></td>
+                <td>Plataforma:<input id="plataforma${i}" type="text" value="${game.plataforma}"></td>
                 <td>Condição:<input type="text" value="${game.condicao}"></td>
                 <td>Ano de Lançamento:<input value="${new Date(game.anoLancamento).toLocaleDateString()}"></td>
                 <td>Genero:<input value="${game.genero}"></td>
