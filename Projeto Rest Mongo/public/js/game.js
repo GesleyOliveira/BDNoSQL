@@ -18,7 +18,7 @@ async function carregaGames(){
                 <td>Nome:${game.nome}</td>
                 <td>Plataforma:${game.plataforma}</td>
                 <td>Condição:${game.condicao}</td>
-                <td>Data de Lançamento:${new Date(game.anoLancamento).getFullYear()}-${new Date(game.anoLancamento).getMonth()}-${new Date(game.anoLancamento).getDate()}</td>
+                <td>Data de Lançamento:${new Date(game.anoLancamento).toJSON().substring(0, 10)}</td>
                 <td>Genero: ${game.genero}</td>
                 <td>Preço: ${game.preco}</td>
                 <td>
@@ -49,7 +49,7 @@ async function carregaGames2(){
                 <td>Plataforma:<input id="plataforma${game._id}" type="text" value="${game.plataforma}"></td>
                 <td>Condição:<input id="condicao${game._id}" type="text" value="${game.condicao}"></td>
                 <td>Data de Lançamento:<input id="anoLancamento${game._id}"
-                value="${new Date(game.anoLancamento).getFullYear()}-${new Date(game.anoLancamento).getMonth()}-${new Date(game.anoLancamento).getDate()}"></td>
+                value="${new Date(game.anoLancamento).toJSON().substring(0, 10)}"></td>
                 <td>Genero:<input id="genero${game._id}" value="${game.genero}"></td>
                 <td>Preço:<input type="number" id="preco${game._id}" value="${game.preco}"></td>
                 <td>Quantidade:<input type="number" id="quantidade${game._id}" value="${game.quantidade}"></td>
@@ -84,6 +84,17 @@ async function atualizaGame(id){
         body: JSON.stringify(game)
         })
         .then(response => response.json())
+        .then(data =>{
+        if (data.acknowledged){
+            alert('Jogo Editado com sucesso!')
+            //atualizamos a listagem
+            carregaGames2()
+        }else if (data.errors){
+            const errorMessages = data.errors.map(error => error.msg)
+            .join('\n')
+           window.alert(`Erros:\n ${errorMessages}`)
+        }
+    })
     }
 }
 

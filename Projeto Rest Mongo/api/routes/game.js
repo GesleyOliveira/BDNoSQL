@@ -20,7 +20,6 @@ const validaGame = [
         }
     }),
     check('plataforma').not().isEmpty().trim().withMessage('Informar a plataforma é obrigatório')
-        .isLength({ min: 2 }).withMessage('A plataforma é muito curto. Mínimo de 3')
         .isLength({ max: 35 }).withMessage('A plataforma é muito longa. Máximo de 35')
         .isAlphanumeric('pt-BR', { ignore: '/. ' }).withMessage('A plataforma não pode conter caracteres especiais'),
     check('condicao').not().isEmpty().trim().withMessage('É obrigatório informar a condição'),
