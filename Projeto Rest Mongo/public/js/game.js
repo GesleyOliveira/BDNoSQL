@@ -18,7 +18,7 @@ async function carregaGames(){
                 <td>Nome:${game.nome}</td>
                 <td>Plataforma:${game.plataforma}</td>
                 <td>Condição:${game.condicao}</td>
-                <td>Ano de Lançamento:${new Date(game.anoLancamento).toLocaleDateString()}</td>
+                <td>Data de Lançamento:${new Date(game.anoLancamento).getFullYear()}-${new Date(game.anoLancamento).getMonth()}-${new Date(game.anoLancamento).getDate()}</td>
                 <td>Genero: ${game.genero}</td>
                 <td>Preço: ${game.preco}</td>
                 <td>
@@ -42,41 +42,38 @@ async function carregaGames2(){
     })
     .then(response => response.json())
     .then(data => {
-        i = 1
         data.forEach(game => {
             tabela.innerHTML += `
             <tr>
-                td
-                <td>Nome:<input id="nome${i}" type="text" value="${game.nome}"></td>
-                <td>Plataforma:<input id="plataforma${i}" type="text" value="${game.plataforma}"></td>
-                <td>Condição:<input id="condicao${i}" type="text" value="${game.condicao}"></td>
-                <td>Ano de Lançamento:<input id="anoLancamento${i}" value="${new Date(game.anoLancamento).toLocaleDateString()}"></td>
-                <td>Genero:<input id="genero${i}" value="${game.genero}"></td>
-                <td>Preço:<input id="preco${i}" value="${game.preco}"></td>
-                <td>Quantidade:<input id="quantidade${i}" value="${game.quantidade}"></td>
+                <td><label for='nome${game._id}'>Nome:</label><input id="nome${game._id}" type="text" value="${game.nome}"></td>
+                <td>Plataforma:<input id="plataforma${game._id}" type="text" value="${game.plataforma}"></td>
+                <td>Condição:<input id="condicao${game._id}" type="text" value="${game.condicao}"></td>
+                <td>Data de Lançamento:<input id="anoLancamento${game._id}"
+                value="${new Date(game.anoLancamento).getFullYear()}-${new Date(game.anoLancamento).getMonth()}-${new Date(game.anoLancamento).getDate()}"></td>
+                <td>Genero:<input id="genero${game._id}" value="${game.genero}"></td>
+                <td>Preço:<input type="number" id="preco${game._id}" value="${game.preco}"></td>
+                <td>Quantidade:<input type="number" id="quantidade${game._id}" value="${game.quantidade}"></td>
                 <td>
                 <button id='botaoExcluir' onclick='removeGame("${game._id}")'>Exlcuir</button>
-                <button id='botaoEditar' onclick='atualizaGame("${game, i}")'>Editar</button>
+                <button id='botaoEditar' onclick='atualizaGame("${game._id}")'>Editar</button>
                 </td>
             </tr>
             ` 
-            i++ 
         })
         
     })
 }
 
-async function atualizaGame(game, i){
-    console.log(i)
+async function atualizaGame(id){
         game = {
-        "_id": game._id,
-        "nome": document.getElementById('nome' + i).value,
-        "plataforma": document.getElementById('plataforma' + i).value,
-        "condicao": document.getElementById('condicao' + i).value,
-        "anoLancamento": document.getElementById('anoLancamento' + i).value,
-        "genero":  document.getElementById('genero' + i).value,
-        "preco" :  document.getElementById('preco' + i).value,
-        "quantidade": parseFloat(document.getElementById('quantidade' + i)).value,
+        "_id": id,
+        "nome": document.getElementById('nome' + id).value,
+        "plataforma": document.getElementById('plataforma' + id).value,
+        "condicao": document.getElementById('condicao' + id).value,
+        "anoLancamento": document.getElementById('anoLancamento' + id).value,
+        "genero":  document.getElementById('genero' + id).value,
+        "preco" :  document.getElementById('preco' + id).value,
+        "quantidade": parseFloat(document.getElementById('quantidade' + id).value),
     }
     if(confirm('Deseja realmente editar este jogo?')){
         await fetch(`${urlBase}/games`,{
@@ -112,7 +109,7 @@ async function removeGame(id) {
 
 document.getElementById('formGame').addEventListener('submit',function (event){
     event.preventDefault() // evita o recarregamento
-    let game = {} // Objeto prestador
+    let game = {} // Objeto Jogo
     game = {
         "nome": document.getElementById('nome').value,
         "plataforma": document.getElementById('plataforma').value,

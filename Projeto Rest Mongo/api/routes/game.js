@@ -20,13 +20,14 @@ const validaGame = [
         }
     }),
     check('plataforma').not().isEmpty().trim().withMessage('Informar a plataforma é obrigatório')
-        .isLength({ min: 2 }).withMessage('A plataforma é muito curto. Mínimo de 5')
-        .isLength({ max: 35 }).withMessage('A plataforma é muito longa. Máximo de 25')
+        .isLength({ min: 2 }).withMessage('A plataforma é muito curto. Mínimo de 3')
+        .isLength({ max: 35 }).withMessage('A plataforma é muito longa. Máximo de 35')
         .isAlphanumeric('pt-BR', { ignore: '/. ' }).withMessage('A plataforma não pode conter caracteres especiais'),
     check('condicao').not().isEmpty().trim().withMessage('É obrigatório informar a condição'),
     check('preco').notEmpty().withMessage('O preço é obrigatório').isFloat(),
     check('anoLancamento').matches(/^\d{4}-\d{2}-\d{2}$/)
-        .withMessage('O formato da data é inválido. Informe yyyy-mm-dd'),
+        .withMessage('O formato da data é inválido. Informe yyyy-mm-dd')
+        .notEmpty().withMessage('A data de lançamento é obrigatória'),
 
     check('genero').notEmpty().withMessage('O genero é obrigatório'),
     check('quantidade').isNumeric().withMessage('A quantidade deve ser um número')
