@@ -2,12 +2,17 @@
 @baseURL = http://localhost:4000/api/games
 
 //GET - Lista todos os games
-GET {{baseURL}}/?LIMIT=3&skip=0
+GET {{baseURL}}/?limit=2&skip=0
+Content-Type: application/json
+
+###
+//GET - Lista os games que atendem aos limites
+get {{baseURL}}/limit/0&150
 Content-Type: application/json
 
 ###
 //GET - Lista o game pelo ID
-get {{baseURL}}/id/662495cd9a5797b8a6b98a6f
+get {{baseURL}}/id/6626b5b3e6d65209e24d039e
 Content-Type: application/json
 
 ### //Precisa usar o "###" separando, para dar certo
@@ -17,7 +22,7 @@ Content-Type: application/json
 
 ### 
 //DELETE - Remove o game pelo id
-DELETE {{baseURL}}/661490c6f459db82cab27bb4
+DELETE {{baseURL}}/626b5b3e6d65209e24d039e
 Content-Type: application/json
 
 ###
