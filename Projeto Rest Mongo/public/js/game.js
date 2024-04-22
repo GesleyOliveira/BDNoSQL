@@ -23,11 +23,11 @@ async function carregaGames() {
                                 <h5 class="card-title">${game.nome}</h5>
                                 <p class="card-text"><strong>Plataforma:</strong> ${game.plataforma}</p>
                                 <p class="card-text"><strong>Condição:</strong> ${game.condicao}</p>
-                                <p class="card-text"><strong>Data de Lançamento:</strong> ${new Date(game.anoLancamento).toLocaleDateString()}</p>
+                                <p class="card-text"><strong>Data de Lançamento:</strong> ${new Date(game.anoLancamento).toJSON().substring(0, 10)}</p>
                                 <p class="card-text"><strong>Gênero:</strong> ${game.genero}</p>
                                 <p class="card-text"><strong>Preço:</strong> R$${game.preco}</p>
                                 <p class="card-text"><strong>Quantidade disponível:</strong> ${game.quantidade}</p>
-                                <button class="btn btn-primary">Comprar</button>
+                                <button class="btn btn-success">Comprar</button>
                             </div>
                         </div>
                     </div>
@@ -89,8 +89,8 @@ async function carregaGames2(){
                             <label for="quantidade${game._id}">Quantidade disponível:</label>
                             <input id="quantidade${game._id}" class="form-control" type="number" value="${game.quantidade}">
                         </div>
-                        <button id='botaoExcluir' class="btn btn-primary" onclick="removeGame('${game._id}')">Excluir</button>
-                        <button id='botaoEditar' class="btn btn-secondary" onclick="atualizaGame('${game._id}')">Editar</button>
+                        <button id='botaoExcluir' class="btn btn-danger" onclick="removeGame('${game._id}')">Excluir</button>
+                        <button id='botaoEditar' class="btn btn-primary" onclick="atualizaGame('${game._id}')">Editar</button>
                     </div>
                 </div>
             </div>
