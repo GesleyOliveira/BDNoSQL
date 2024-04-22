@@ -1,107 +1,46 @@
-/*@font-face {
-    font-family: Nordic;
-    src: url('../Fonts/Nordic.ttf');
-}
-
-body{
-    background-color: rgb(255, 255, 255);
-    display: contents;
-}
-
-.navbar{
-    width: 100%;
-    font-family: Nordic;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    color: rgb(197, 207, 55);
-    background-color: rgb(41, 34, 34);
-    align-content: stretch;
-    
-}
-
-.opcoes{
-    display: flex;
-    justify-content: space-evenly;
-    font-size: small;
-    
-}
-
-a{
-    text-decoration: none;
-    color: rgb(197, 207, 55);
-}
-
-.marca{
-    font-size: medium;
-    display: flex;
-    justify-content: space-around;
-    border-style: double;
-}
-
-.opcao{
+#limitPreco{
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    border-style: double;
-    border-top: 0cap;
-
-}
-
-#dadosTabela tr{
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-size: x-large;
-    border-style:outset;
-    border-width: 5px;
-    border-color: aqua;
-    border-radius: 10px;
-    box-shadow: 10px 5px 25px black;
-}
-
-td{
-    width: fit-content;
-    border: 0px;
-    border-bottom: 1px;
-    border-color: rgb(50, 136, 207);
-    border-style: ridge;
-}
-
-#dadosTabela{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     flex-direction: row;
-    
+    justify-content: flex-start;
+    height: 38px;
 }
 
-.card{
-    padding-top: 15px;
-    width: 33%;
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 30%;
+    padding-right: 10px;
 }
 
-#botao{
-    padding-top: 15px;
+.input-group-text {
+    display: -ms-flexbox;
     display: flex;
-    width: 100%;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    height: 32px;
+}
+
+.btn-block {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    width: 10%;
+    height: 32px;
 }
-
-#botaoComprar{
-    font-size: large;
-    background-color: white;
-    border-radius: 10px;
-    border-color:  rgb(3, 255, 3);
-    color:  rgb(0, 139, 0) ;
-}
-
-#botaoComprar:hover{
-    color: white;
-    background-color: rgb(3, 255, 3);
-}*/

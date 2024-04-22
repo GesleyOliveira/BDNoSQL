@@ -4,34 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/inicio.css">
     <script src="js/game.js" defer></script>
     <title>New Games</title>
 </head>
-
-<!--
-<body onload="carregaGames()">
-    <nav class="navbar">
-        <div class="marca">
-            <h2 class="nomeMarca">New Games</h2>
-        </div>
-        <div class="opcoes">
-            <a href="index.html" class="opcao">
-                <h3 class="palavraInicio">Inicio</h3>
-            </a>
-            <a href="login.html" class="opcao">
-                <h3 class="palavraLogin">Login</h3>
-            </a>  
-        </div>
-    </nav> 
-
-    
-        <table id="dadosTabela">
-            
-
-            
-        </table>
-
--->
 
 <body onload="carregaGames()">
     <nav class="navbar navbar-dark bg-dark">
@@ -44,8 +20,22 @@
             </ul>
         </div>
     </nav>
+   
 
     <div class="container mt-5">
+        <div id="limitPreco">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Preço: </span>
+            <div class="input-group input-group-sm mb-3" id="areaLimitMin">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Limite Minimo:</span>
+                <input type="number" id="limitMin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+              <div class="input-group input-group-sm mb-3" id="areaLimitMax">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Limite Maximo:</span>
+                <input type="number" id="limitMax" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+              <button type="button" class="btn btn-primary btn-block" onclick="buscaGames()">Buscar🔍</button>
+        </div>
+        <br>
         <div class="row" id="dadosTabela">
             <!-- Jogos cadastrados em cards serão inseridos aqui -->
         </div>

@@ -7,7 +7,7 @@ Content-Type: application/json
 
 ###
 //GET - Lista o game pelo ID
-get {{baseURL}}/id/661490c6f459db82cab27bb4
+get {{baseURL}}/id/662495cd9a5797b8a6b98a6f
 Content-Type: application/json
 
 ### //Precisa usar o "###" separando, para dar certo
@@ -43,13 +43,12 @@ PUT {{baseURL}}
 Content-Type: application/json
 
 {
-    "nome": "The Tears Of The Kingdom",
-    "plataforma": "Nintendo Switch",
-    "condicao": "Novo",
-    "preco": 280.00,
-    "anoLancamento": "2023-05-12",
-    "genero": [
-        "acao",
-        "aventura"],
+    "_id": "662495cd9a5797b8a6b98a6f",
+    "nome": "The Ocarina of time",
+    "plataforma": "Nintendo 64",
+    "condicao": "usado",
+    "preco": "150.9",
+    "anoLancamento": "1998-08-11",
+    "genero": "acao,aventura",
     "quantidade": 1
-}
+  }

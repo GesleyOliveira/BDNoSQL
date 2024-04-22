@@ -100,7 +100,53 @@ async function carregaGames2(){
     })
 }
 
+async function buscaGames() {
+    const cardContainer = document.getElementById('dadosTabela');
+    cardContainer.innerHTML = ''; // Limpa antes de recarregar
+    const limitMin = document.getElementById("limitMin").value
+    const limitMax = document.getElementById("limitMax").value
 
+if(limitMin != "" && limitMax != ""){
+    try {
+        const response = await fetch(`${urlBase}/games/limit/${limitMin}&${limitMax}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            data.forEach(game => {
+                cardContainer.innerHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${game.nome}</h5>
+                                <p class="card-text"><strong>Plataforma:</strong> ${game.plataforma}</p>
+                                <p class="card-text"><strong>Condição:</strong> ${game.condicao}</p>
+                                <p class="card-text"><strong>Data de Lançamento:</strong> ${new Date(game.anoLancamento).toJSON().substring(0, 10)}</p>
+                                <p class="card-text"><strong>Gênero:</strong> ${game.genero}</p>
+                                <p class="card-text"><strong>Preço:</strong> R$${game.preco}</p>
+                                <p class="card-text"><strong>Quantidade disponível:</strong> ${game.quantidade}</p>
+                                <button class="btn btn-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            window.alert('Erro ao carregar os jogos. Por favor, tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao carregar os jogos:', error.message);
+        window.alert('Erro ao carregar os jogos. Por favor, tente novamente.');
+    }
+}else{
+    carregaGames()
+}
+}
 
 async function atualizaGame(id){
         game = {
@@ -110,7 +156,7 @@ async function atualizaGame(id){
         "condicao": document.getElementById('condicao' + id).value,
         "anoLancamento": document.getElementById('anoLancamento' + id).value,
         "genero":  document.getElementById('genero' + id).value,
-        "preco" :  document.getElementById('preco' + id).value,
+        "preco" :  parseFloat(document.getElementById('preco' + id).value),
         "quantidade": parseFloat(document.getElementById('quantidade' + id).value),
     }
     if(confirm('Deseja realmente editar este jogo?')){
@@ -165,7 +211,7 @@ document.getElementById('formGame').addEventListener('submit',function (event){
         "condicao": document.getElementById('condicao').value,
         "anoLancamento": document.getElementById('anoLancamento').value,
         "genero": document.getElementById('genero').value,
-        "preco" : document.getElementById('preco').value,
+        "preco" : parseFloat(document.getElementById('preco').value),
         "quantidade": parseFloat(document.getElementById('qtd').value),
     }/* Fim do objeto */
    // alert(JSON.stringify(prestador)) apenas para testes

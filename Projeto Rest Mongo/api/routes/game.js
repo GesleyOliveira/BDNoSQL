@@ -114,6 +114,36 @@ router.get('/nome/:filtro', async (req, res) => {
         })
     }
 })
+
+/**
+ * GET /api/games/limit/:limitMin&:limitMax
+ * Lista os jogos que atendem aos limites 
+ * Parâmetros: limitMin e limitMax
+ */
+router.get('/limit/:limitMin&:limitMax', async (req, res) => {
+    try {
+        const limitMin = Number(req.params.limitMin)
+        const limitMax = Number(req.params.limitMax)
+        const docs = []
+        await db.collection(nomeCollection).find({
+            $and: [
+                { 'preco': {$gt: limitMin, $lt: limitMax } },
+            ]
+        }).forEach((doc) => {
+            docs.push(doc)
+        })
+        res.status(200).json(docs)
+    } catch (err) {
+        res.status(500).json({
+            errors: [{
+                value: `${err.message}`,
+                msg: 'Erro ao obter os jogos pelos limites passados',
+                param: '/limit/:limitMin&:limitMax'
+            }]
+        })
+    }
+})
+
 /**
  * GET /api/game/id
  * Remove o prestador de serviço pelo id
