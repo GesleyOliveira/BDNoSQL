@@ -50,7 +50,58 @@ a{
 }
 
 #dadosTabela tr{
+    width: fit-content;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    font-size: x-large;
+    border-style:outset;
+    border-width: 5px;
+    border-color: aqua;
+    border-radius: 10px;
+    box-shadow: 10px 5px 25px black;
+}
+
+td{
+    width: fit-content;
+    border: 0px;
+    border-bottom: 1px;
+    border-color: rgb(50, 136, 207);
+    border-style: ridge;
+}
+
+#dadosTabela{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+
+.card{
+    padding-top: 15px;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+#botao{
+    padding-top: 15px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#botaoComprar{
+    font-size: large;
+    background-color: white;
+    border-radius: 10px;
+    border-color:  rgb(3, 255, 3);
+    color:  rgb(0, 139, 0) ;
+}
+
+#botaoComprar:hover{
+    color: white;
+    background-color: rgb(3, 255, 3);
 }

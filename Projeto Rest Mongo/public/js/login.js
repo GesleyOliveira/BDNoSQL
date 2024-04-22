@@ -1,8 +1,8 @@
 function verificaLogin(){
-    var email = document.getElementById('email').value;
+    var usuario = document.getElementById('usuario').value;
     var senha = document.getElementById('senha').value;
 
-    if(email == "adm" && senha == "adm123"){
+    if(usuario == "adm" && senha == "adm123"){
         window.location = 'cadastro.html'    
     }
     else{

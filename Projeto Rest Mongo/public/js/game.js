@@ -14,17 +14,20 @@ async function carregaGames(){
     .then(data => {
         data.forEach(game => {
             tabela.innerHTML += `
-            <tr>
-                <td>Nome:${game.nome}</td>
-                <td>Plataforma:${game.plataforma}</td>
-                <td>Condição:${game.condicao}</td>
-                <td>Data de Lançamento:${new Date(game.anoLancamento).toJSON().substring(0, 10)}</td>
-                <td>Genero: ${game.genero}</td>
-                <td>Preço: ${game.preco}</td>
-                <td>
-                <button id='botaoComprar'>Comprar</button>
-                </td>
-            </tr>
+            <tbody class="card">
+                <tr>
+                    <td>Nome: ${game.nome}</td>
+                    <td>Plataforma: ${game.plataforma}</td>
+                    <td>Condição: ${game.condicao}</td>
+                    <td>Data de Lançamento: ${new Date(game.anoLancamento).toJSON().substring(0, 10)}</td>
+                    <td>Genero: ${game.genero}</td>
+                    <td>Preço: R$${game.preco}</td>
+                    <td>Quantidade disponível: ${game.quantidade}</td>
+                    <td id="botao">
+                    <button id='botaoComprar'>Comprar</button>
+                    </td>
+                </tr>
+            </tbody>
             `  
         })
     })

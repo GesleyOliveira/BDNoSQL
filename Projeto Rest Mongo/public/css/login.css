@@ -1,43 +1,77 @@
+#espacoLogin{
+    display:flex;
+    justify-content: center;
+}
+
 .areaLogin{
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-content: center;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    font-size: larger;
 }
 
 .login{
+    width: 100%;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
-.email{
+.aviso{
     display: flex;
-    height: 20%;
-    width: 25%;
-    flex-direction: column
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.usuario{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .senha{
     display: flex;
-    height: 20%;
-    width: 25%;
-    flex-direction: column
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
-.botao{
+.botaoLogin{
     padding-top: 5px;
     display: flex;
     justify-content: center;
 }
 
-#botao{
-    width: 100%;
+#usuario{
+    width: 40%;
+}
+
+#senha{
+    width: 40%;
+}
+
+#botaoLogin{
+    font-size: large;
+    background-color: white;
+    border-color: blue;
+    border-radius: 10px;
+    color: blue;
+}
+
+#botaoLogin:hover{
+    background-color: blue;
+    color: white;
 }
 
 #login{
-    width: 100px;
-    
+    color: blue;
 }
 
 #aviso{
