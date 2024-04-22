@@ -1,41 +1,52 @@
 const urlBase = 'http://localhost:4000/api'
 
-async function carregaGames(){
-    const tabela = document.getElementById('dadosTabela')
-    tabela.innerHTML = '' // Liga antes de recarregar
-    //Faremos a requisição GET para a nossa API REST
-    await fetch(`${urlBase}/games`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
+async function carregaGames() {
+    const cardContainer = document.getElementById('dadosTabela');
+    cardContainer.innerHTML = ''; // Limpa antes de recarregar
+
+    try {
+        const response = await fetch(`${urlBase}/games`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            data.forEach(game => {
+                cardContainer.innerHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${game.nome}</h5>
+                                <p class="card-text"><strong>Plataforma:</strong> ${game.plataforma}</p>
+                                <p class="card-text"><strong>Condição:</strong> ${game.condicao}</p>
+                                <p class="card-text"><strong>Data de Lançamento:</strong> ${new Date(game.anoLancamento).toLocaleDateString()}</p>
+                                <p class="card-text"><strong>Gênero:</strong> ${game.genero}</p>
+                                <p class="card-text"><strong>Preço:</strong> R$${game.preco}</p>
+                                <p class="card-text"><strong>Quantidade disponível:</strong> ${game.quantidade}</p>
+                                <button class="btn btn-primary">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            window.alert('Erro ao carregar os jogos. Por favor, tente novamente.');
         }
-    })
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(game => {
-            tabela.innerHTML += `
-            <tbody class="card">
-                <tr>
-                    <td>Nome: ${game.nome}</td>
-                    <td>Plataforma: ${game.plataforma}</td>
-                    <td>Condição: ${game.condicao}</td>
-                    <td>Data de Lançamento: ${new Date(game.anoLancamento).toJSON().substring(0, 10)}</td>
-                    <td>Genero: ${game.genero}</td>
-                    <td>Preço: R$${game.preco}</td>
-                    <td>Quantidade disponível: ${game.quantidade}</td>
-                    <td id="botao">
-                    <button id='botaoComprar'>Comprar</button>
-                    </td>
-                </tr>
-            </tbody>
-            `  
-        })
-    })
+    } catch (error) {
+        console.error('Erro ao carregar os jogos:', error.message);
+        window.alert('Erro ao carregar os jogos. Por favor, tente novamente.');
+    }
 }
+
+
 
 async function carregaGames2(){
     const tabela = document.getElementById('dadosTabela')
-    tabela.innerHTML = '' // Liga antes de recarregar
+    tabela.innerHTML = ''; // Limpa antes de recarregar
     //Faremos a requisição GET para a nossa API REST
     await fetch(`${urlBase}/games`, {
         method: 'GET',
@@ -47,25 +58,49 @@ async function carregaGames2(){
     .then(data => {
         data.forEach(game => {
             tabela.innerHTML += `
-            <tr>
-                <td><label for='nome${game._id}'>Nome:</label><input id="nome${game._id}" type="text" value="${game.nome}"></td>
-                <td>Plataforma:<input id="plataforma${game._id}" type="text" value="${game.plataforma}"></td>
-                <td>Condição:<input id="condicao${game._id}" type="text" value="${game.condicao}"></td>
-                <td>Data de Lançamento:<input id="anoLancamento${game._id}"
-                value="${new Date(game.anoLancamento).toJSON().substring(0, 10)}"></td>
-                <td>Genero:<input id="genero${game._id}" value="${game.genero}"></td>
-                <td>Preço:<input type="number" id="preco${game._id}" value="${game.preco}"></td>
-                <td>Quantidade:<input type="number" id="quantidade${game._id}" value="${game.quantidade}"></td>
-                <td>
-                <button id='botaoExcluir' onclick='removeGame("${game._id}")'>Exlcuir</button>
-                <button id='botaoEditar' onclick='atualizaGame("${game._id}")'>Editar</button>
-                </td>
-            </tr>
-            ` 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="nome${game._id}">Nome:</label>
+                            <input id="nome${game._id}" class="form-control" type="text" value="${game.nome}">
+                        </div>
+                        <div class="form-group">
+                            <label for="plataforma${game._id}">Plataforma:</label>
+                            <input id="plataforma${game._id}" class="form-control" type="text" value="${game.plataforma}">
+                        </div>
+                        <div class="form-group">
+                            <label for="condicao${game._id}">Condição:</label>
+                            <input id="condicao${game._id}" class="form-control" type="text" value="${game.condicao}">
+                        </div>
+                        <div class="form-group">
+                            <label for="anoLancamento${game._id}">Data de Lançamento:</label>
+                            <input id="anoLancamento${game._id}" class="form-control" type="text" value="${new Date(game.anoLancamento).toJSON().substring(0, 10)}">
+                        </div>
+                        <div class="form-group">
+                            <label for="genero${game._id}">Gênero:</label>
+                            <input id="genero${game._id}" class="form-control" type="text" value="${game.genero}">
+                        </div>
+                        <div class="form-group">
+                            <label for="preco${game._id}">Preço:</label>
+                            <input id="preco${game._id}" class="form-control" type="number" value="${game.preco}">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade${game._id}">Quantidade disponível:</label>
+                            <input id="quantidade${game._id}" class="form-control" type="number" value="${game.quantidade}">
+                        </div>
+                        <button id='botaoExcluir' class="btn btn-primary" onclick="removeGame('${game._id}')">Excluir</button>
+                        <button id='botaoEditar' class="btn btn-secondary" onclick="atualizaGame('${game._id}')">Editar</button>
+                    </div>
+                </div>
+            </div>
+        `;
         })
         
     })
 }
+
+
 
 async function atualizaGame(id){
         game = {

@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="js/game.js" defer></script>
     <title>New Games</title>
 </head>
+
 <body onload="carregaGames2()">
-    <nav class="navbar">
-        <div class="marca">
-            <h2 class="nomeMarca">New Games</h2>
-        </div>
-        <div class="opcoes">
-            <a href="index.html" class="opcao">
-                <h3 class="palavraInicio">Inicio</h3>
-            </a>
-            <a href="cadastro.html" class="opcao">
-                <h3 class="palavraLogin">Cadastrar</h3>
-            </a>  
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">New Games</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="cadastro.html">Cadastrar</a>
+                </li>
+            </ul>
         </div>
     </nav>   
 
-    <div>
-        <table>
-            <tbody id="dadosTabela">
-
-            </tbody>
-            
-        </table>
+    <div class="container mt-4">
+        <div class="row" id="dadosTabela">
+            <!-- Os cards de jogos cadastrados serão exibidos aqui-->
+        </div>
     </div>
 
 </body>

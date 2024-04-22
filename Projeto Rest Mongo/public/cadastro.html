@@ -3,59 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="js/game.js" defer></script>
     <title>New Games</title>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="marca">
-            <h2 class="nomeMarca">New Games</h2>
+<body>    
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">New Games</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="jogosCadastrados.html">Jogos</a>
+                </li>
+            </ul>
         </div>
-        <div class="opcoes">
-            <a href="index.html" class="opcao">
-                <h3 class="palavraInicio">Inicio</h3>
-            </a>
-            <a href="jogosCadastrados.html" class="opcao">
-                <h3 class="palavraLogin">Jogos</h3>
-            </a>  
-        </div>
-    </nav>    
-    
-    <form class="form" id="formGame">
-        <div>
-            <div class="nomeJogo">
-                <label for="nome" id="labelNome">Nome do jogo</label>
-                <input type="text" id="nome" name="nome">
-            </div>
-            <div class="plataforma">
-                <label for="plataforma" id="labelPlataforma">Plataforma</label>
-                <input type="text" id="plataforma" name="plataforma">
-            </div>
-            <div class="condicao">
-                <label for="condicao" id="labelCondicao">Condição</label>
-                <input type="text" id="condicao" name="condicao">
-            </div>
-            <div>
-                <label for="anoLancamento" id="labelLancamento">Data de Lançamento</label>
-                <input type="date" id="anoLancamento" name="anoLancamento">
-            </div>
-            <div>
-                <label for="genero" id="labelGenero">Genero</label>
-                <input type="text" id="genero" name="genero">
-            </div>
-            <div class="preco">
-                <label for="preco" id="labelPreco">Preço</label>
-                <input type="number" id="preco" name="preco">
-            </div>
-            <div>
-                <label for="qtd" id="labelQtd">Quantidade</label>
-                <input type="number" id="qtd" name="qtd">
-            </div>
-            <div>
-                <button id="botaoCadastrar" type="submit">Cadastrar</button>
+    </nav>     
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Cadastro de Jogo</h2>
+                        <form id="formGame">
+                            <div class="form-group">
+                                <label for="nome" id="labelNome">Nome do Jogo</label>
+                                <input type="text" class="form-control" id="nome" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="plataforma" id="labelPlataforma">Plataforma</label>
+                                <input type="text" class="form-control" id="plataforma" name="plataforma">
+                            </div>
+                            <div class="form-group">
+                                <label for="condicao" id="labelCondicao">Condição</label>
+                                <input type="text" class="form-control" id="condicao" name="condicao">
+                            </div>
+                            <div class="form-group">
+                                <label for="anoLancamento" id="labelLancamento">Data de Lançamento</label>
+                                <input type="date" class="form-control" id="anoLancamento" name="anoLancamento">
+                            </div>
+                            <div class="form-group">
+                                <label for="genero" id="labelGenero">Gênero</label>
+                                <input type="text" class="form-control" id="genero" name="genero">
+                            </div>
+                            <div class="form-group">
+                                <label for="preco" id="labelPreco">Preço</label>
+                                <input type="number" class="form-control" id="preco" name="preco">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantidade" id="labelQtd">Quantidade</label>
+                                <input type="number" class="form-control" id="qtd" name="qtd">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" id="botaoCadastrar">Cadastrar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
+
+    <script src="js/game.js" defer></script>
 </body>
 </html>
