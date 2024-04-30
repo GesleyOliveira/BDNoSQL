@@ -1,0 +1,16 @@
+// Teste do endpoint dos usuários
+@baseURL = http://localhost:4000/api/usuarios
+
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "Laura Santos Oliveira",
+    "email": "laura.oliveira3@hotmail.com",
+    "senha": "1"
+}
+
+###
+// GET - Lista todos os usuários
+
+GET {{baseURL}}
