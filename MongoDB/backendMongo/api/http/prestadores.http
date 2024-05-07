@@ -7,8 +7,10 @@ Content-Type: application/json
 
 ###
 //GET - Lista o prestador pelo ID
-get {{baseURL}}/id/65f8c3c70d77a286c2c9dd06
+get {{baseURL}}/id/663977fd04ef1942474d6a05
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTVmNTk4N2E2NjhjMDQyM2JiYTFkIn0sImlhdCI6MTcxNTAzODQwMiwiZXhwIjoxNzE1MTI0ODAyfQ.OOfwAKK2Cuyelgu6PzINSEef7o6ArIouW-OQwOsyycs
+
 
 ### //Precisa usar o "###" separando, para dar certo
 //GET - Lista o prestador pela razao social ou fantasia
@@ -23,9 +25,10 @@ Content-Type: application/json
 ###
 POST {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTVmNTk4N2E2NjhjMDQyM2JiYTFkIn0sImlhdCI6MTcxNTAzODQwMiwiZXhwIjoxNzE1MTI0ODAyfQ.OOfwAKK2Cuyelgu6PzINSEef7o6ArIouW-OQwOsyycs
 
 {
-    "cnpj" : "12345345000166",
+    "cnpj" : "12345345000133",
     "razao_social" : "MARIA ALCINA TRANSPORTES LTDA",
     "cep" : "13310160",
     "endereco" : {

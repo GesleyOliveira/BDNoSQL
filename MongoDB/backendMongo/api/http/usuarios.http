@@ -7,10 +7,21 @@ Content-Type: application/json
 {
     "nome": "Laura Santos Oliveira",
     "email": "laura.oliveira3@hotmail.com",
-    "senha": "1"
+    "senha": "12345678Aa*"
 }
 
 ###
 // GET - Lista todos os usuários
 
 GET {{baseURL}}
+Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTVmNTk4N2E2NjhjMDQyM2JiYTFkIn0sImlhdCI6MTcxNTAzODQwMiwiZXhwIjoxNzE1MTI0ODAyfQ.OOfwAKK2Cuyelgu6PzINSEef7o6ArIouW-OQwOsyycs
+###
+// POST - Efetua o login
+POST {{baseURL}}/LOGIN
+Content-Type: application/json
+
+{
+    "email": "laura.oliveira3@hotmail.com",
+    "senha": "12345678Aa*"
+}
