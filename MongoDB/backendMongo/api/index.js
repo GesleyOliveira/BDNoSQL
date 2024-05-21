@@ -29,6 +29,7 @@ app.get('/api', (req, res) => {
 //Rotas da API
 app.use('/api/prestadores', RotasPrestadores)
 app.use('/api/usuarios', RotasUsuarios)
+
 //Listen
 app.listen(PORT, function(){
     console.log(`💻Servidor rodando na porta ${PORT}`)

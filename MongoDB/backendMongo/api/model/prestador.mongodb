@@ -21,11 +21,8 @@ const prestador = {
 db.prestadores.insertOne(prestador)
 
 use('FatecVotorantim')
-db.prestadores.find()
-
-
 const prestador2 = {
-    "cnpj" : "12345345000166",
+    "cnpj" : "45190324008950",
     "razao_social" : "MARIA ALCINA TRANSPORTES LTDA",
     "cep" : "13310160",
     "endereco" : {
@@ -44,3 +41,6 @@ const prestador2 = {
     }
 }
 db.prestadores.insertOne(prestador2)
+
+use('FatecVotorantim')
+db.prestadores.find()
