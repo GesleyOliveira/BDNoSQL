@@ -25,7 +25,7 @@ check('cnpj')
 check('razao_social')
     .not().isEmpty().trim().withMessage('A Razão Social é obrigatória')
     .isLength({min:5}).withMessage('A razão é muito curta. Mínimo de 5')
-    .isLength({max:200}).withMessage('Aa razão é muito longa. Máximo de 200')
+    .isLength({max:200}).withMessage('A razão é muito longa. Máximo de 200')
     .isAlphanumeric('pt-BR', {ignore: '/. '}).withMessage('A razão social não pode conter caracteres especiais'),
 check('cep')
     .isLength({min:8, max:8}).withMessage('O CEP informado é inválido')
